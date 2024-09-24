@@ -1,101 +1,181 @@
+"use client"; // Ensure this is added at the top
+
 import Image from "next/image";
+import { useState } from "react"; // Add this import
 
-export default function Home() {
+function Home() {
+  // Add state for the cart with a specific item type
+  const [cart, setCart] = useState<{ name: string; price: number }[]>([]);
+
+  // Function to add item to the cart
+  const addToCart = (item: { name: string; price: number }) => {
+    setCart((prevCart) => [...prevCart, item]);
+  };
+
+  // Function to calculate total
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price, 0);
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="bg-black bg-opacity-800 min-h-screen p-8">
+      <div className="flex items-center space-x-4">
         <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src="/images/pizza.jpg"  
+          alt="dashboard pic"
+          width={100} 
+          height={100}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <h1 className="text-start text-4xl font-extrabold decoration-from-font outline-popover-foreground text-rose-800 font-serif">
+          Pizza Mania
+        </h1>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+      <div className="mt-8">
+        <h2 className="text-5xl font-bold text-transparent text-rose-700">Treat Yourself</h2>
+
+        <div className="mt-4 grid grid-cols-3 gap-4">
+          <a href="#menu">
+            <button className="p-4 bg-yellow-500 bg-opacity-80 text-white font-semibold rounded-tl-full ">Menu</button>
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+          <a href="#deals">
+            <button className="p-4 bg-red-700 bg-opacity-80 text-white font-semibold rounded-tl-full">Deals</button>
+          </a>
+          <a href="#contact">
+            <button className="p-4 bg-blue-500 bg-opacity-80 text-white font-semibold rounded-tl-full">Contact Us</button>
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        <div>
           <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/images/pizza-1.jpg"  
+            alt="dashboard pic"
+            width={1500} 
+            height={1000}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+
+        <div className="mt-8" id="menu">
+          <h2 className="text-2xl font-bold text-gray-200">Menu Items</h2>
+          <div className="grid grid-cols-3 gap-4 mt-4">
+            
+            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+              <Image
+                src="/images/photo-.avif" 
+                alt="Pizza Margherita"
+                width={300}
+                height={200}
+              />
+              <h3 className="text-lg font-bold text-white">Pizza Margherita large</h3>
+              <p className="text-gray-300">700PKR</p>
+              <button
+                onClick={() => addToCart({ name: "Pizza Margherita large", price: 700 })}
+                className="mt-2 p-2  bg-rose-800 text-white rounded"
+              >
+                Add to Cart
+              </button>
+            </div>
+       
+            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+              <Image
+                src="/images/pizza.jpg"
+                alt="Pepperoni Pizza"
+                width={300}
+                height={100}
+              />
+              <h3 className="text-lg font-bold text-white">Peperoni Mushroom Pizza large</h3>
+              <p className="text-gray-300">700PKR</p>
+              <button
+                onClick={() => addToCart({ name: "Peperoni Mushroom Pizza large", price: 700 })}
+                className="mt-2 p-2  bg-rose-800 text-white rounded"
+              >
+                Add to Cart
+              </button>
+            </div>
+
+            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+              <Image
+                src="/images/photo-1.avif" 
+                alt="Arabian Green Pizza"
+                width={300}
+                height={100}
+              />
+              <h3 className="text-lg font-bold text-white">Arabian Green Pizza large</h3>
+              <p className="text-gray-300">700PKR</p>
+              <button
+                onClick={() => addToCart({ name: "Arabian Green Pizza large", price: 700 })}
+                className="mt-2 p-2  bg-rose-800 text-white rounded"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold text-gray-200">Shopping Cart</h2>
+          <ul className="mt-4">
+            {cart.map((item, index) => (
+              <li key={index} className="text-gray-300">{item.name} - {item.price} PKR</li>
+            ))}
+          </ul>
+          <div className="mt-2 text-white">Total: {calculateTotal()} PKR</div>
+          <button className="mt-4 p-2 bg-yellow-500 text-white rounded">Place Order</button>
+        </div>
+
+      
+        <div className="mt-8" id="deals">
+          <h2 className="text-2xl font-bold text-gray-200">Current Deals</h2>
+          <div className="grid grid-cols-2 gap-4 mt-4">
+           
+            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+              <Image
+                src="/images/image-1.jpg" 
+                alt="Deal 1"
+                width={300}
+                height={300}
+              />
+              <h3 className="text-lg font-bold text-white">Buy 1 Get 1 Free</h3>
+              <p className="text-gray-300">Only for 1200PKR!</p>
+              <button
+                onClick={() => addToCart({ name: "Buy 1 Get 1 Free", price: 1200 })}
+                className="mt-2 p-2 bg-rose-800 text-white rounded"
+              >
+                Add to Cart
+              </button>
+            </div>
+
+            {/* Deal Item 2 */}
+            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+              <Image
+                src="/images/deal.webp" 
+                alt="Deal 2"
+                width={300}
+                height={200}
+              />
+              <h3 className="text-lg font-bold text-white">Family Combo</h3>
+              <p className="text-gray-300">Just for 1099PKR!</p>
+              <button
+                onClick={() => addToCart({ name: "Family Combo", price: 1099 })}
+                className="mt-2 p-2 bg-rose-800 text-white rounded"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Us Section */}
+        <div className="mt-8" id="contact">
+          <h2 className="text-2xl font-bold text-gray-200">Contact Us</h2>
+          <p className="text-gray-300">Email: contact@pizzamania.com</p>
+          <p className="text-gray-300">Phone: +92-334-87665-31</p>
+          <p className="text-gray-300">Address: 123 Pizza Lane, Food City</p>
+        </div>
+      </div>
     </div>
   );
 }
+
+export default Home;
