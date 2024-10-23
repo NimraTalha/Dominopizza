@@ -55,7 +55,6 @@ const pizzas = [
   },
 ];
 
-
 const images = [
   '/images/slide1.jpg',
   '/images/slide2.jpg', 
@@ -75,11 +74,9 @@ const Menu = () => {
 
   return (
     <>
-      {/* Render Header */}
       <Header />
 
       <div className="container mx-auto px-4 py-8">
-        {/* Slideshow */}
         <div className="mb-8">
           <div className="relative w-full overflow-hidden">
             <img
@@ -90,20 +87,19 @@ const Menu = () => {
           </div>
         </div>
 
-        {/* Pizza Menu */}
         <h1 className="text-4xl font-bold text-center mb-8">Pizza Menu</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {pizzas.map((pizza) => (
             <div key={pizza.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src={pizza.image} alt={pizza.name} className="w-full h-48 object-cover" />
+              <img src={pizza.image} alt={pizza.name} className="w-full h-40 object-cover" />
               <div className="p-4">
-                <h2 className="text-xl font-semibold">{pizza.name}</h2>
+                <h2 className="text-xl font-bold">{pizza.name}</h2>
                 <p className="text-gray-600">{pizza.description}</p>
-                <div className="mt-2">
-                  <span className="text-red-500 line-through">{pizza.oldPrice}</span>
-                  <span className="text-blue-500 font-bold ml-2">{pizza.newPrice}</span>
+                <div className="flex items-center justify-between mt-4">
+                  <span className="text-lg font-bold text-blue-600">{pizza.newPrice}</span>
+                  <span className="text-gray-500 line-through">{pizza.oldPrice}</span>
                 </div>
-                <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
+                <button className="mt-4 w-full bg-blue-500 text-white py-2 rounded">
                   Add to Cart
                 </button>
               </div>
@@ -112,7 +108,6 @@ const Menu = () => {
         </div>
       </div>
 
-      {/* Render Footer */}
       <Footer />
     </>
   );

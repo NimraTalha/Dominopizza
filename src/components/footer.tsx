@@ -1,4 +1,3 @@
-
 import React from "react";
 
 const Footer = () => {
@@ -6,7 +5,7 @@ const Footer = () => {
     <footer className="bg-white text-black p-8 mt-10">
       <div className="container mx-auto">
         <div className="flex flex-wrap justify-between">
-          <div className="w-1/4">
+          <div className="w-full sm:w-1/2 md:w-1/4 mb-6">
             <h4 className="font-bold mb-2">Domino’s Pizza</h4>
             <ul>
               <li><a href="/about" className="hover:underline">About Us</a></li>
@@ -17,7 +16,7 @@ const Footer = () => {
               <li><a href="/contact" className="hover:underline">Contact</a></li>
             </ul>
           </div>
-          <div className="w-1/4">
+          <div className="w-full sm:w-1/2 md:w-1/4 mb-6">
             <h4 className="font-bold mb-2">Support</h4>
             <ul>
               <li>Call 111 366 466</li>
@@ -27,19 +26,17 @@ const Footer = () => {
               <li><a href="/store-finder" className="hover:underline">Store Finder</a></li>
             </ul>
           </div>
-          <div className="w-1/4">
+          <div className="w-full sm:w-1/2 md:w-1/4 mb-6">
             <h4 className="font-bold mb-2">Download Our App</h4>
             <ul>
               <li><a href="https://www.apple.com/app-store/" className="hover:underline">Apple Store</a></li>
               <li><a href="https://play.google.com/store" className="hover:underline">Android App Store</a></li>
             </ul>
           </div>
-          <div className="w-1/4">
+          <div className="w-full sm:w-1/2 md:w-1/4 mb-6">
             <h4 className="font-bold mb-2">Copyright</h4>
             <p>2024 Dominos. All rights reserved.</p>
             <p>Powered By</p>
-
-           
             <div className="flex mt-4 space-x-4">
               <a href="https://www.facebook.com/dominospakistan" target="_blank" rel="noopener noreferrer">
                 <img
